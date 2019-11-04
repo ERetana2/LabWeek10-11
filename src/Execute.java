@@ -39,10 +39,11 @@ public class Execute {
         Tree.insertDataAtLocation(processedInfo[3],newMember); // insert initial data to the root of the tree
         //iterate through the file while it still contains lines
         while (textReader.ready()){
+            String lineRead = textReader.readLine();
+            String [] member = lineRead.split(" ");
+            for(int i  = 0 ; i < member.length; i++){
 
-
-            FamilyMember newMember = new FamilyMember(processedInfo[0],processedInfo[1],Integer.parseInt(processedInfo[2]));
-            Tree.insertDataAtLocation(processedInfo[2]);
+            }
 
         }
         
