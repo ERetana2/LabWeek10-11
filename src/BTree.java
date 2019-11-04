@@ -134,7 +134,13 @@ public class BTree<T> {
      * in-order traversal of left subtree, then root, then in-order traversal of right subtree.
      * Complete the implementation of this method.
      * Your implementation of this method must be RECURSIVE. */
-    public void inOrderTraversal() {
-        // BONUS: Your code goes here...   
+    public void inOrderTraversal(BTNode <T> root) {
+        if(root == null){
+            return;
+        }else {
+            inOrderTraversal(root.getLeft());
+            root.printNode();
+            inOrderTraversal(root.getRight());
+        }
     }
 }
