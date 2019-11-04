@@ -44,7 +44,6 @@ public class Execute {
                 newMember = new FamilyMember(processedInfo[0],processedInfo[1],Integer.parseInt(processedInfo[2]));
                 Tree.insertDataAtLocation(processedInfo[3],newMember);
             }
-            newMember.toString();
 
         }
         
