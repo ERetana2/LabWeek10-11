@@ -11,6 +11,8 @@
  * anything else in the code. 
  *************************************************************************/ 
 
+import jdk.dynalink.linker.LinkerServices;
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.*;
@@ -29,21 +31,20 @@ public class Execute {
         BufferedReader textReader = new BufferedReader(fr);
 
         // Create an empty binary tree of Family Members
-        BTree<FamilyMember> Tree = new BTree<FamilyMember>();
-        //Create Root of tree
-        String firstLine = textReader.readLine();
+        BTree<FamilyMember> Tree = new BTree<>();
 
-        String [] processedInfo = processLine(firstLine);
-
-        FamilyMember newMember = new FamilyMember(processedInfo[0],processedInfo[1],Integer.parseInt(processedInfo[2]));
-        Tree.insertDataAtLocation(processedInfo[3],newMember); // insert initial data to the root of the tree
-        //iterate through the file while it still contains lines
+        FamilyMember newMember = new FamilyMember();
+        String [] processedInfo;
         while (textReader.ready()){
             String lineRead = textReader.readLine();
-            String [] member = lineRead.split(" ");
+            String [] member = lineRead.split(" "); // splits string into each individual family member
+            //split each member's attributes --> create new family Members -- > insert to tree
             for(int i  = 0 ; i < member.length; i++){
-
+                processedInfo = processLine(member[i]);
+                newMember = new FamilyMember(processedInfo[0],processedInfo[1],Integer.parseInt(processedInfo[2]));
+                Tree.insertDataAtLocation(processedInfo[3],newMember);
             }
+            newMember.toString();
 
         }
         
@@ -66,7 +67,7 @@ public class Execute {
         // Creates a linked-list-based tree directly from reading the file:
         BTree<FamilyMember> Tree = readFamilyIntoTree(filename);
         // Prints out the content of the linked-list-based tree:
-        Tree.print();
+        Tree.print(Tree.getRoot());
         
         System.out.println("Tree size = " + Tree.getSize());
         System.out.println("Tree height = " + Tree.getHeight());
