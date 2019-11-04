@@ -67,19 +67,17 @@ public class BTree<T> {
      *      - then pre-order of right subtree.
      * TODO 4. Complete the implementation of this method.
      * Your implementation of this method must be RECURSIVE. */
-    public void print() {
-        BTNode <T> temp = root;
-        if(temp == null){
+    public void print(BTNode <T> root ) {
+        if(root == null){
             return;
         }
+        root.printNode();
 
-        if(temp.hasLeft()){
-            temp.getLeft();
-            print();
+        if(root.hasLeft()){
+            print(root.getLeft());
         }
-        else if(temp.hasRight()){
-            temp.getRight();
-            print();
+        if( root.hasRight()){
+            print(root.getRight());
         }
     }
        
@@ -112,6 +110,11 @@ public class BTree<T> {
         // And now we follow directions:
         for (int j = 0; j < directions.length() - 1; j++) {
             // TODO 5. Your code goes here...
+            if(directions.charAt(j) == 'L' || directions.charAt(j) == 'F'){
+                iter = iter.getLeft();
+            }else if(directions.charAt(j) == 'R' || directions.charAt(j) == 'M'){
+                iter = iter.getRight();
+            }
         }   
         // Let's build the node to be plugged
         BTNode<T> N = new BTNode<T>(data);
