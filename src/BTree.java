@@ -68,17 +68,11 @@ public class BTree<T> {
      * TODO 4. Complete the implementation of this method.
      * Your implementation of this method must be RECURSIVE. */
     public void print(BTNode <T> root ) {
-        if(root == null){
-            return;
-        }
-        root.printNode();
+        if(root == null) return;
 
-        if(root.hasLeft()){
-            print(root.getLeft());
-        }
-        if( root.hasRight()){
-            print(root.getRight());
-        }
+        root.printNode();
+        print(root.getLeft());
+        print(root.getRight());
     }
        
     /* TODO 5:

@@ -38,19 +38,17 @@ public class Execute {
         while (textReader.ready()){
             String lineRead = textReader.readLine();
             String [] member = lineRead.split(" "); // splits string into each individual family member
+
             //split each member's attributes --> create new family Members -- > insert to tree
             for(int i  = 0 ; i < member.length; i++){
                 processedInfo = processLine(member[i]);
                 newMember = new FamilyMember(processedInfo[0],processedInfo[1],Integer.parseInt(processedInfo[2]));
                 Tree.insertDataAtLocation(processedInfo[3],newMember);
             }
-
         }
-        
         textReader.close();
-        
         // NOTE: Make sure that your tree has an updated size and height
-        
+
         // Return the resulting filled tree
         return Tree;
 
