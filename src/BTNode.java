@@ -60,6 +60,8 @@ public class BTNode<T> {
     public int height() {
         if (this == null) return -1;
         if (right == null && left == null) return 0;
+        if(right == null) return left.height();
+        if(left == null) return right.height();
         return 1 + Math.max(left.height(), right.height());
     }
     
@@ -71,6 +73,12 @@ public class BTNode<T> {
     public int sizeBelow() {
         if(this == null)return 0;
         if(right == null && left == null) return 1;
+        if(left == null && right != null) {
+            return left.sizeBelow();
+        }if(left != null && right == null) {
+            return right.sizeBelow();
+        }
+
         return left.sizeBelow() + right.sizeBelow();
     }
     

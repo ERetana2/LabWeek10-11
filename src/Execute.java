@@ -48,7 +48,8 @@ public class Execute {
         }
         textReader.close();
         // NOTE: Make sure that your tree has an updated size and height
-
+        //Tree.resetHeight();
+        //Tree.resetSize();
         // Return the resulting filled tree
         return Tree;
 
@@ -63,8 +64,9 @@ public class Execute {
 
         // Creates a linked-list-based tree directly from reading the file:
         BTree<FamilyMember> Tree = readFamilyIntoTree(filename);
+
         // Prints out the content of the linked-list-based tree:
-        Tree.print(Tree.getRoot());
+        Tree.print();
         
         System.out.println("Tree size = " + Tree.getSize());
         System.out.println("Tree height = " + Tree.getHeight());
