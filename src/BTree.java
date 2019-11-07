@@ -69,24 +69,17 @@ public class BTree<T> {
      * TODO 4. Complete the implementation of this method.
      * Your implementation of this method must be RECURSIVE. */
     public void print() {
-        BTNode<T> temp = root;
-        if(temp == null) return;
+        //print node
+        root.printNode();
 
-        if(temp.hasLeft()) {
-            BTree<T> leftTree = new BTree<>(temp.getLeft());
+        if (root.hasLeft()) { // if root has left then iter through the left side
+            BTree<T> leftTree = new BTree<>(root.getLeft());
             leftTree.print();
         }
-        if(temp.hasRight()){
-            BTree<T> rightTree = new BTree<>(temp.getRight());
+        if (root.hasRight()) { // if root has right then iter through the right side
+            BTree<T> rightTree = new BTree<>(root.getRight());
             rightTree.print();
         }
-        if(temp.hasRight() && temp.hasLeft()){
-            BTree<T> leftTree = new BTree<>(temp.getLeft());
-            leftTree.print();
-            BTree<T> rightTree = new BTree<>(temp.getRight());
-            rightTree.print();
-        }
-
     }
 
     /* TODO 5:
@@ -118,10 +111,14 @@ public class BTree<T> {
         // And now we follow directions:
         for (int j = 0; j < directions.length() - 1; j++) {
             // TODO 5. Your code goes here...
-            if (directions.charAt(j) == 'L' || directions.charAt(j) == 'F') {
-                iter = iter.getLeft();
+            if (directions.charAt(j) == 'L' || directions.charAt(j) == 'F' ) {
+                if (iter.hasLeft()) {
+                    iter = iter.getLeft();
+                }
             } else if (directions.charAt(j) == 'R' || directions.charAt(j) == 'M') {
-                iter = iter.getRight();
+                if (iter.hasRight()) {
+                    iter = iter.getRight();
+                }
             }
         }
         // Let's build the node to be plugged
@@ -143,15 +140,16 @@ public class BTree<T> {
      * Complete the implementation of this method.
      * Your implementation of this method must be RECURSIVE. */
     public void inOrderTraversal() {
-        BTNode<T> temp = root;
-        if (temp == null) return; // if root is null
 
-        temp = temp.getLeft(); // iterate left
-        print();
+        if (root.hasLeft()) {
+            BTree<T> leftTree = new BTree<>(root.getLeft());
+            leftTree.print();
+        }
+        root.printNode();
 
-        temp.printNode();// print node
-
-        temp = temp.getRight(); // iterate right
-        print();
+        if (root.hasRight()) {
+            BTree<T> rightTree = new BTree<>(root.getRight());
+            rightTree.print();
+        }
     }
 }

@@ -32,9 +32,10 @@ public class Execute {
 
         // Create an empty binary tree of Family Members
         BTree<FamilyMember> Tree = new BTree<>();
-
+        //Init variables
         FamilyMember newMember = new FamilyMember();
         String [] processedInfo;
+
         while (textReader.ready()){
             String lineRead = textReader.readLine();
             String [] member = lineRead.split(" "); // splits string into each individual family member
@@ -48,8 +49,8 @@ public class Execute {
         }
         textReader.close();
         // NOTE: Make sure that your tree has an updated size and height
-        //Tree.resetHeight();
-        //Tree.resetSize();
+        Tree.resetHeight();
+        Tree.resetSize();
         // Return the resulting filled tree
         return Tree;
 

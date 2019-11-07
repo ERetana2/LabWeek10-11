@@ -71,15 +71,14 @@ public class BTNode<T> {
      * TODO 1. Complete the implementation of the method sizeBelow.
      * Your implementation must be RECURSIVE */
     public int sizeBelow() {
-        if(this == null)return 0;
         if(right == null && left == null) return 1;
-        if(left == null && right != null) {
-            return left.sizeBelow();
-        }if(left != null && right == null) {
-            return right.sizeBelow();
+        if(left == null) {
+            return 1 + right.sizeBelow();
         }
-
-        return left.sizeBelow() + right.sizeBelow();
+        if(right == null) {
+            return 1 + left.sizeBelow();
+        }
+        return 1 + left.sizeBelow() + right.sizeBelow();
     }
     
     /* TODO 2:
@@ -88,7 +87,7 @@ public class BTNode<T> {
      * TODO 2. Complete the implementation of the method hasLeft.
      */
     public boolean hasLeft() {
-        return this.left == null;
+        return this.left != null;
     }
     
     /* TODO 3:
@@ -97,6 +96,6 @@ public class BTNode<T> {
      * TODO 3. Complete the implementation of the method hasLeft.
      */
     public boolean hasRight() {
-        return this.right == null;
+        return this.right != null;
     }
 }
