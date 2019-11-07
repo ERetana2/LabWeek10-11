@@ -111,16 +111,17 @@ public class BTree<T> {
         // And now we follow directions:
         for (int j = 0; j < directions.length() - 1; j++) {
             // TODO 5. Your code goes here...
-            if (directions.charAt(j) == 'L' || directions.charAt(j) == 'F' ) {
-                if (iter.hasLeft()) {
+            if (directions.charAt(j) == 'L' || directions.charAt(j) == 'F' ) { // when direction is L or F , move iter left
+                if (iter.hasLeft()) { // if iter has a left side then run loop
                     iter = iter.getLeft();
                 }
-            } else if (directions.charAt(j) == 'R' || directions.charAt(j) == 'M') {
-                if (iter.hasRight()) {
+            } else if (directions.charAt(j) == 'R' || directions.charAt(j) == 'M') { // when direction R/M move iter right
+                if (iter.hasRight()) { // if iter has a right side run loop
                     iter = iter.getRight();
                 }
             }
         }
+
         // Let's build the node to be plugged
         BTNode<T> N = new BTNode<T>(data);
         // Now we "plug" / insert the new node in the proper side (left or right) 
@@ -141,14 +142,14 @@ public class BTree<T> {
      * Your implementation of this method must be RECURSIVE. */
     public void inOrderTraversal() {
 
-        if (root.hasLeft()) {
-            BTree<T> leftTree = new BTree<>(root.getLeft());
+        if (root.hasLeft()) { // traverse the left side of the tree
+            BTree<T> leftTree = new BTree<>(root.getLeft()); // creates new tree with root  = root of the left Subtree
             leftTree.print();
         }
-        root.printNode();
+        root.printNode(); // print node after left side traversal
 
         if (root.hasRight()) {
-            BTree<T> rightTree = new BTree<>(root.getRight());
+            BTree<T> rightTree = new BTree<>(root.getRight()); // creates new tree with root  = root of the right Subtree
             rightTree.print();
         }
     }

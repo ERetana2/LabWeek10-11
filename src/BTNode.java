@@ -9,7 +9,7 @@
  * anything else in the code. 
  *************************************************************************/ 
 
-public class BTNode<T> {
+public class BTNode<T> extends  FamilyMember{
 
     private T data;
     private BTNode<T> left;
