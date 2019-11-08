@@ -24,6 +24,7 @@ public class BSTree<T extends Comparable<T>> extends BTree<T> {
      * Insert a node that contains this data at the correct position in the BST
      */
     public void insert(T data) {
+        /*
         BTNode<T> newData = new BTNode<>(data);
         if (getRoot() == null) {
             setRoot(newData);
@@ -39,6 +40,8 @@ public class BSTree<T extends Comparable<T>> extends BTree<T> {
             }
 
         }
+
+         */
 
     }
 }
